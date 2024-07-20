@@ -1,23 +1,19 @@
 #!/bin/bash
-
 while true
-do	
+do
 	read -p "Enter 2 numbers: " a b
 	read -p "Enter the operator: " op
-
 	case $op in
 		"+")
-			ans=$(( $a + $b ));;
+			ans=$(echo "$a + $b" | bc);;
 		"-")
-			ans=$(( $a - $b ));;
+			ans=$(echo "$a - $b" | bc);;
 		"*")
-			ans=$(( $a * $b ));;
+			ans=$(echo "$a * $b" | bc);;
 		"/")
-			ans=$(( $a / $b ));;
+			ans=$(echo "scale=2; $a / $b" | bc);;
 		*)
 			exit 1;;
 	esac
-
 	echo "$a $op $b = $ans"
-
 done
